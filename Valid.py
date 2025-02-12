@@ -13,10 +13,12 @@ class Valid:
   @staticmethod
   def zip(input):
     #length?
+    if (len(input) != 5):
+      return False
 
     #digits?
-
-    #real ZIP?
+    if (not re.match(r"^[0-9]{5}$", input)):
+      return False
     
     return True
   
@@ -31,12 +33,15 @@ class Valid:
   """
   @staticmethod
   def phone(input):
-    #length?
+    if (input == None):
+      return False
 
-    #digits?
+    #length?
+    if (len(input) < 10 or len(input) > 50):
+      return False
 
     #format?
-
-    #real number?
+    if (not re.match(r"^\+[\d]{1,3} \([0-9]{3}\) [0-9]{3}-[0-9]{4}$", input)):
+      return False
     
     return True

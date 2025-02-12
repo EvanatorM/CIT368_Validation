@@ -15,10 +15,15 @@ def main():
 
   print("Writing JSON to file.")
   for obj in response.json():
-    #print(obj)
+    print(obj)
     
     #TODO: validate before write.
     #Valid module contains static validation method stubs
+    if (obj == None):
+      continue
+
+    if (len(obj) != 5):
+      continue
 
     #zip is located in obj[3]
     if not Valid.zip(obj[3]):

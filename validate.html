@@ -54,10 +54,18 @@
 
     //TODO: Improve this function to allow names but stop anything that isn't a name.
     function is_name_valid(input){
-      if(input.substr("script") > -1)
+      if (input.indexOf("script") > -1)
         return false;
 
-      if(input.substr("iframe") > -1)
+      if (input.indexOf("iframe") > -1)
+        return false;
+
+      // Remove whitespace from the beginning and end of a string
+      // to reduce user frustration in case of mistake
+      input = input.trim();
+
+      // Allow for first name and/or last name
+      if (!/^[a-zA-Z'-]{1,30}( [a-zA-Z'-]{1,30}){0,1}$/.test(input))
         return false;
       
       return true;
@@ -65,6 +73,20 @@
 
     //TODO: Implement this method to allow age and stop anything else.
     function is_age_valid(input){
+      // Remove whitespace from the beginning and end of a string
+      // to reduce user frustration in case of mistake
+      input = input.trim();
+
+      // Check if input is a number
+      if (!/^\d+$/.test(input))
+        return false;
+
+      let ageInt = parseInt(input); // To avoid repetitive parseInts
+
+      // Check a range between 13 and 120
+      if (ageInt < 13 || ageInt > 120)
+        return false;
+
       return true;
     }
   </script>
